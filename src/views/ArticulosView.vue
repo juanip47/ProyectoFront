@@ -14,6 +14,7 @@
           <td>{{ item.descripcionArticulo }}</td>
           <td>{{ item.cantidadArticulo }}</td>
           <td>{{ item.precioArticulo }}</td>
+          <td>{{ item.seccion.nombreSeccion }}</td>
           <td class="acciones">
             <v-icon mid color="blue" @click.stop="editarArticulos(item)">mdi-pencil</v-icon>
             <v-icon mid color="red" @click.stop="confirmarEliminarArticulo(item.idArticulo)">mdi-delete</v-icon>
@@ -50,6 +51,7 @@ export default {
         { text: 'Descripcion', value: 'descripcionArticulo' },
         { text: 'Cantidad', value: 'cantidadArticulo' },
         { text: 'Precio', value: 'precioArticulo' },
+        { text: 'Seccion', value: 'nombreSeccion' },
       ],
       confirmacionEliminacionArticulo: false,
       articuloAEliminar: null
@@ -65,7 +67,7 @@ export default {
                 this.articulos = response.data;
             })
             .catch(error => {
-              console.error('Error al recuperar articulos:', error);
+              console.error('Error al recuperar artículos:', error);
             });
     },
     editarArticulos(articulo) {

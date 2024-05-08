@@ -13,12 +13,12 @@ const routes: Array<RouteConfig> = [
     component: HomeView
   },
   {
-    path: '/Articulos',
+    path: '/articulos',
     name: 'articulos',
     component: ArticulosView
   },
   {
-    path: '/EditarArticulo',
+    path: '/editarArticulo',
     name: 'editarArticulo',
     component: EditarArticuloView
   }
