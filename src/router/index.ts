@@ -3,6 +3,10 @@ import VueRouter, { RouteConfig } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ArticulosView from '../views/ArticulosView.vue'
 import EditarArticuloView from '../views/EditarArticuloView.vue'
+import CrearArticuloView from '../views/CrearArticuloView.vue'
+import AdminView from '../views/AdminView.vue'
+import SeccionesView from '../views/SeccionesView.vue'
+import ArticulosPorSeccionView from '../views/ArticulosPorSeccionView.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +25,26 @@ const routes: Array<RouteConfig> = [
     path: '/editarArticulo',
     name: 'editarArticulo',
     component: EditarArticuloView
+  },
+  {
+    path: '/crearArticulo',
+    name: 'crearArticulo',
+    component: CrearArticuloView
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: AdminView
+  },
+  {
+    path: '/secciones',
+    name: 'secciones',
+    component: SeccionesView
+  },
+  {
+    path: '/articulosPorSeccion',
+    name: 'articulosPorSeccion',
+    component: ArticulosPorSeccionView
   }
 ]
 

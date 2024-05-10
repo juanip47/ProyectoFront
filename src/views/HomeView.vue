@@ -1,14 +1,16 @@
 <template>
-  <h1>home</h1>
+  <h1>HOME</h1>
 </template>
 
-<script lang="ts">
-  import Vue from 'vue'
-
-  export default Vue.extend({
-    name: 'Home',
-
-    components: {
-    },
-  })
+<script>
+import BackHome from '../components/BackHome.vue'
+export default {
+  components: {
+    BackHome
+  }
+}
 </script>
+
+<style>
+
+</style>

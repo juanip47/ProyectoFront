@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <BackHome/>
-    <h2 class="encabezado">Listado de Articulos</h2>
+    <h2 class="encabezado">Listado de Artículos de {{ this.seccion.nombreSeccion }}</h2>
     <v-data-table
       :headers="headers"
       :items="articulos"
@@ -14,7 +14,6 @@
           <td>{{ item.descripcionArticulo }}</td>
           <td>{{ item.cantidadArticulo }}</td>
           <td>{{ item.precioArticulo }}</td>
-          <td>{{ item.seccion?.nombreSeccion }}</td>
           <td class="acciones">
             <v-icon mid color="info" @click.stop="editarArticulos(item)">mdi-pencil</v-icon>
             <v-icon mid color="error" @click.stop="confirmarEliminarArticulo(item.idArticulo)">mdi-delete</v-icon>
@@ -45,6 +44,7 @@
 <script>
 import axios from 'axios';
 import BackHome from '../components/BackHome.vue';
+import Seccion from '@/models/Seccion'
 export default {
     components: {
     BackHome
@@ -57,18 +57,19 @@ export default {
         { text: 'Descripcion', value: 'descripcionArticulo' },
         { text: 'Cantidad', value: 'cantidadArticulo' },
         { text: 'Precio', value: 'precioArticulo' },
-        { text: 'Seccion', value: 'nombreSeccion' },
       ],
       confirmacionEliminacionArticulo: false,
-      articuloAEliminar: null
+      articuloAEliminar: null,
+      seccion: new Seccion()
     };
   },
   created() {
-    this.fetchArticulos()
+    this.seccion = this.$route.params.seccion;
+    this.obtenerArticulosPorSeccion()
   },
   methods: {
-    fetchArticulos() {
-        axios.get('http://localhost:8000/api/v1/tienda/articulos')
+    obtenerArticulosPorSeccion() {
+        axios.get(`http://localhost:8000/api/v1/tienda/articulos/seccion?idSeccion=${this.seccion.idSeccion}`)
             .then(response => {
                 this.articulos = response.data;
             })
@@ -88,7 +89,7 @@ export default {
       axios.delete(`http://localhost:8000/api/v1/tienda/articulo?idArticulo=${idArticulo}`)
         .then(response => {
             console.log(response.data);
-            this.fetchArticulos();
+            this.obtenerArticulosPorSeccion();
         })
         .catch(error => {
           console.log('Error al eliminar el artículo:', error)
