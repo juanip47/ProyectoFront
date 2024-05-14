@@ -8,28 +8,35 @@
                     <v-form @submit.prevent="confirmarCreacionArticulo">
                         <div class="hijos">
                             <label for="descripcion">Descripción:</label>
-                            <input type="text" class="form-control" id="descripcion" required>
+                            <input v-model="articulo.descripcionArticulo" type="text" class="form-control" id="descripcion" required>
                         </div>
                         <div class="hijos">
                             <label for="cantidad">Cantidad:</label>
-                            <input type="number" class="form-control" id="cantidad" required>
+                            <input v-model="articulo.cantidadArticulo" type="number" class="form-control" id="cantidad" required>
                         </div>
                         <div class="hijos">
                             <label for="precio">Precio:</label>
-                            <input type="number" class="form-control" id="precio" required>
+                            <input v-model="articulo.precioArticulo" type="number" class="form-control" id="precio" required>
                         </div>
                         <div class="hijos">
-                            <v-combobox
-                                v-model="seccion"
+                            <v-select
+                                v-model="articulo.seccion.idSeccion"
                                 :items="secciones"
                                 label="Selecciona la sección"
+                                item-value="idSeccion"
                                 item-text="nombreSeccion"
                                 solo
                                 dense
-                            ></v-combobox>
+                            ></v-select>
                         </div>
-                        <button type="submit" class="submit">Crear</button>
-                        <button class="cancelar" @click="cancelarCreacionArticulo">Cancelar</button>
+                        <v-btn 
+                            type="submit" 
+                            class="submit"
+                        >Crear</v-btn>
+                        <v-btn  
+                            class="cancelar"
+                            @click="cancelarCreacionArticulo"
+                        >Cancelar</v-btn >
                     </v-form>
                 </v-card-text>
             </v-card>
@@ -48,8 +55,15 @@ export default {
     },
     data() {
         return {
-            articulo: new Articulo(),
-            seccion: null,
+            articulo: {
+                descripcionArticulo: "",
+                cantidadArticulo: null,
+                precioArticulo: null,
+                seccion: {
+                    idSeccion: null,
+                    nombreSeccion: ""
+                }
+            },
             secciones:[]
         }
     },
@@ -95,7 +109,6 @@ export default {
     text-align: center;
 }
 .submit{
-    background-color: chartreuse;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     padding: 0.1%;
@@ -103,7 +116,6 @@ export default {
     margin-left: 40%;
 }
 .cancelar{
-    background-color: orangered;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     padding: 0.1%;

@@ -109,7 +109,6 @@ export default {
     text-align: center;
 }
 .submit{
-    background-color: chartreuse;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     padding: 0.1%;
@@ -117,7 +116,6 @@ export default {
     margin-left: 32%;
 }
 .cancelar{
-    background-color: orangered;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     padding: 0.1%;
