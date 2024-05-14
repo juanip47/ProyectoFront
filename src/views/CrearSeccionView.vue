@@ -44,11 +44,16 @@ export default {
     methods: {
         confirmarCreacionSeccion() {
             axios.post('http://localhost:8000/api/v1/tienda/nuevaSeccion', this.seccion)
-                .then(() => {
+                .then(response => {
                     this.$router.push({ name: 'secciones' });
+                    window.alert(response.data)
                 })
                 .catch(error => {
                     console.error('Error al crear la nueva sección:', error);
+                    
+                    if (error == 'AxiosError: Request failed with status code 500') {
+                        window.alert('La sección ya existe')
+                    }
                 });
         },
         cancelarCreacionSeccion() {

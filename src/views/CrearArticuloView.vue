@@ -46,7 +46,6 @@
 </template>
 
 <script>
-import Articulo from '@/models/Articulo';
 import axios from 'axios';
 import BackHome from '../components/BackHome.vue';
 export default {
@@ -73,11 +72,15 @@ export default {
     methods: {
         confirmarCreacionArticulo() {
             axios.post('http://localhost:8000/api/v1/tienda/nuevoArticulo', this.articulo)
-                .then(() => {
+                .then(response => {
                     this.$router.push({ name: 'articulos' });
+                    window.alert(response.data)
                 })
                 .catch(error => {
                     console.error('Error al crear el nuevo artículo:', error);
+                    if (error == 'AxiosError: Request failed with status code 500') {
+                        window.alert('El artículo ya existe')
+                    }
                 });
         },
         obtenerSecciones() {

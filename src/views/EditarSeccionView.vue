@@ -45,11 +45,15 @@ export default {
     methods: {
         confirmarEdicionSeccion() {
             axios.put(`http://localhost:8000/api/v1/tienda/editarSeccion`, this.seccion)
-                .then(() => {
+                .then(response => {
                     this.$router.push({ name: 'secciones' });
+                    window.alert(response.data)
                 })
                 .catch(error => {
                     console.error('Error al guardar los cambios:', error);
+                    if (error == 'AxiosError: Request failed with status code 500') {
+                        window.alert('La sección ya existe')
+                    }
                 });
         },
         cancelarEdicionSeccion() {

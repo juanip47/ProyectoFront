@@ -73,11 +73,15 @@ export default {
     methods: {
         confirmarEdicionArticulo() {
             axios.put(`http://localhost:8000/api/v1/tienda/editarArticulo`, this.articulo)
-                .then(() => {
+                .then(response => {
                     this.$router.push({ name: 'articulos' });
+                    window.alert(response.data)
                 })
                 .catch(error => {
                     console.error('Error al guardar los cambios:', error);
+                    if (error == 'AxiosError: Request failed with status code 500') {
+                        window.alert('El artículo ya existe')
+                    }
                 });
         },
         obtenerSecciones() {
