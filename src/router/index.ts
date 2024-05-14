@@ -9,6 +9,7 @@ import SeccionesView from '../views/SeccionesView.vue'
 import ArticulosPorSeccionView from '../views/ArticulosPorSeccionView.vue'
 import EditarSeccionView from '../views/EditarSeccionView.vue'
 import CrearSeccionView from '../views/CrearSeccionView.vue'
+import UsuariosView from '../views/UsuariosView.vue'
 
 Vue.use(VueRouter)
 
@@ -57,6 +58,11 @@ const routes: Array<RouteConfig> = [
     path: '/crearSeccion',
     name: 'crearSeccion',
     component: CrearSeccionView
+  },
+  {
+    path: '/usuarios',
+    name: 'usuarios',
+    component: UsuariosView
   }
 ]
 

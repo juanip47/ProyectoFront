@@ -3,7 +3,7 @@
         <BackHome/>
 
         <v-row>
-            <v-card class="carta" @click="irGestionInventario">
+            <v-card @click="irGestionInventario" class="carta">
             <v-card-text>
                 <v-img
                     alt="Imagen de almacén"
@@ -17,7 +17,7 @@
             <v-card-actions>Gestionar Inventario</v-card-actions>
         </v-card>
 
-        <v-card class="carta" @click="irGestionSecciones">
+        <v-card @click="irGestionSecciones" class="carta">
             <v-card-text>
                 <v-img
                     alt="Imagen de almacén"
@@ -31,7 +31,7 @@
             <v-card-actions>Gestionar Secciones</v-card-actions>
         </v-card>
 
-        <v-card class="carta">
+        <v-card  @click="irGestionUsuarios" class="carta">
             <v-card-text>
                 <v-img
                     alt="Imagen de almacén"
@@ -62,10 +62,13 @@ export default {
     },
     methods: {
         irGestionInventario() {
-            this.$router.push({ name: 'articulos' })
+            this.$router.push({ name: 'articulos' });
         },
         irGestionSecciones() {
-            this.$router.push({ name: 'secciones' })
+            this.$router.push({ name: 'secciones' });
+        },
+        irGestionUsuarios() {
+            this.$router.push({ name: 'usuarios' });
         }
     }
 }
