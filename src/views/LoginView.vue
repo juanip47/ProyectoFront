@@ -10,9 +10,16 @@
                         contain
                         src="../assets/Logo H&S Super.png"
                         transition="scale-transition"
-                        width="55"
+                        width="60"
                     />
                 </v-card-title>
+                <div class="erroresLogin">
+                    <p v-if="errores.length">
+                        <ul>
+                            <li v-for="error in errores" :key="error">{{ error }}</li>
+                        </ul>
+                    </p>
+                </div>
                 <v-card-text>
                     <v-form>
                         <div class="hijosLogin">
@@ -24,13 +31,13 @@
                             <input v-model="contrasenia" type="password" class="form-control" id="contrasenia" required>
                         </div>
                         <v-btn 
-                            type="submit" 
                             class="submitLogin"
                             @click="validarLoginUsuario"
                         >Continuar</v-btn>
                         <br/>
                         <button 
                             class="crearUsuarioLogin"
+                            @click="crearUsuario"
                         >¿No tienes cuenta? Crea una aquí</button>
                     </v-form>
                 </v-card-text>
@@ -52,27 +59,48 @@ export default {
         return {
             correo: "",
             contrasenia: "",
-            usuarioComprobar: new Usuario()
+            usuarioComprobar: new Usuario(),
+            errores: []
         }
     },
     created() {
+        
     },
     methods: {
         validarLoginUsuario() {
-            window.alert("ENTRE")
-            window.alert(this.correo)
             axios.get(`http://localhost:8000/api/v1/tienda/usuarioPorCorreo?correoUsuario=${this.correo}`)
                 .then(response => {
                     this.usuarioComprobar = response.data
-                    console.log(response.data)
-                    console.log(this.usuarioComprobar)
-                    window.alert("ENTRE1")
+                    if (this.usuarioComprobar.contraseniaUsuario == this.contrasenia) {
+                        this.errorValidacion = false
+                        this.$router.push({ name: 'admin' });
+                    } else {
+                        this.errores = []
+
+                        if (!this.contrasenia) {
+                            this.errores.push('Contraseña requerido')
+                        } else {
+                            this.errores.push('Contraseña incorrecta')
+                        }
+                    }
                 })
                 .catch(error => {
                     console.log('Error al obtener el usuario:', error)
-                    window.alert("ENTRE2")
+                    this.errores = []
+
+                    if (!this.correo) {
+                        this.errores.push('Correo requerido')
+                    } else {
+                        this.errores.push('No existe usuario con este correo')
+                    }
+
+                    if (!this.contrasenia) {
+                        this.errores.push('Contraseña requerido')
+                    }
                 })
-            window.alert("SALI")
+        },
+        crearUsuario() {
+            this.$router.push({ name: 'crearUsuario' });
         }
     }
 }
@@ -80,7 +108,8 @@ export default {
 
 <style>
 .v-main{
-    background-color: #FF6961;
+    background: -webkit-linear-gradient(180deg, #ef2525,#e5f505);
+    background: linear-gradient(180deg, #ef2525,#e5f505);
 }
 .encabezadoLogin{
     display: flex;
@@ -107,7 +136,14 @@ export default {
     font-style: italic;
     margin: 3% 0 0 33%;    
 }
+.erroresLogin{
+    text-align: center;
+    color: red;
+}
 label{
     margin-right: 2.5%;
+}
+ul{
+    list-style: none;
 }
 </style>

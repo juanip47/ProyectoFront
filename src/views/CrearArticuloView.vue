@@ -102,7 +102,7 @@ export default {
 <style>
 .encabezado {
     display: flex;
-     justify-content: center;
+    justify-content: center;
     color: red;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
