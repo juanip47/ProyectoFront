@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <BackHome/>
-    <h2 class="encabezado">Listado de Articulos</h2>
+    <h2 class="encabezadoArticulo">Listado de Articulos</h2>
     <v-data-table
       :headers="headers"
       :items="articulos"
@@ -25,7 +25,7 @@
 
     <v-card>
       <v-card-text>
-        <button class="crear" @click="crearArticulo"><v-icon mdi color="black" size="x-large">mdi-plus</v-icon></button>
+        <button class="crearArticulo" @click="crearArticulo"><v-icon mdi color="black" size="x-large">mdi-plus</v-icon></button>
       </v-card-text>
     </v-card>
 
@@ -104,12 +104,13 @@ export default {
 </script>
 
 <style scoped>
-  .encabezado{
-    color: red;
+  .encabezadoArticulo{
+    color: greenyellow  ;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
+    text-align: center;
   }
-  .crear{
+  .crearArticulo{
     padding: 0 49% 0 49%;
   }
 </style>

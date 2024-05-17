@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <BackHome/>
-    <h2 class="encabezado">Listado de Secciones</h2>
+    <h2 class="encabezadoSeccion">Listado de Secciones</h2>
     <v-data-table
       :headers="headers"
       :items="secciones"
@@ -23,7 +23,7 @@
 
     <v-card>
       <v-card-text>
-        <button class="crear" @click="crearSeccion"><v-icon mdi color="black" size="x-large">mdi-plus</v-icon></button>
+        <button class="crearSeccion" @click="crearSeccion"><v-icon mdi color="black" size="x-large">mdi-plus</v-icon></button>
       </v-card-text>
     </v-card>
 
@@ -103,12 +103,13 @@ export default {
 </script>
 
 <style scoped>
-  .encabezado{
-    color: red;
+  .encabezadoSeccion{
+    color: greenyellow;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
+    text-align: center;
   }
-  .crear{
+  .crearSeccion{
     padding: 0 49% 0 49%;
   }
 </style>

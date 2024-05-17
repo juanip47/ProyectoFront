@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <BackHome/>
-    <h2 class="encabezado">Listado de Usuarios</h2>
+    <h2 class="encabezadoUsuario">Listado de Usuarios</h2>
     <v-data-table
       :headers="headers"
       :items="usuarios"
@@ -22,7 +22,7 @@
 
     <v-card>
       <v-card-text>
-        <button class="crear" @click="crearUsuario"><v-icon mdi color="black" size="x-large">mdi-plus</v-icon></button>
+        <button class="crearUsuario" @click="crearUsuario"><v-icon mdi color="black" size="x-large">mdi-plus</v-icon></button>
       </v-card-text>
     </v-card>
 
@@ -97,13 +97,14 @@ export default {
 };
 </script>
 
-<style scoped>
-  .encabezado{
-    color: red;
+<style>
+  .encabezadoUsuario{
+    color: greenyellow;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
+    text-align: center;
   }
-  .crear{
+  .crearUsuario{
     padding: 0 49% 0 49%;
   }
 </style>
