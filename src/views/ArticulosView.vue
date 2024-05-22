@@ -15,6 +15,7 @@
           <td>{{ item.cantidadArticulo }}</td>
           <td>{{ item.precioArticulo }}</td>
           <td>{{ item.seccion?.nombreSeccion }}</td>
+          <td>{{ item.marca?.nombreMarca }}</td>
           <td class="acciones">
             <v-icon mid color="info" @click.stop="editarArticulos(item)">mdi-pencil</v-icon>
             <v-icon mid color="error" @click.stop="confirmarEliminarArticulo(item.idArticulo)">mdi-delete</v-icon>
@@ -58,6 +59,8 @@ export default {
         { text: 'Cantidad', value: 'cantidadArticulo' },
         { text: 'Precio', value: 'precioArticulo' },
         { text: 'Seccion', value: 'nombreSeccion' },
+        { text: 'Marca', value: 'nombreMarca' },
+        { text: 'Editar' }
       ],
       confirmacionEliminacionArticulo: false,
       articuloAEliminar: null

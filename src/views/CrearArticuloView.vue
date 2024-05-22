@@ -29,6 +29,17 @@
                                 dense
                             ></v-select>
                         </div>
+                        <div class="hijos">
+                            <v-select
+                                v-model="articulo.marca.idMarca"
+                                :items="marcas"
+                                label="Selecciona la marca"
+                                item-value="idMarca"
+                                item-text="nombreMarca"
+                                solo
+                                dense
+                            ></v-select>
+                        </div>
                         <v-btn 
                             type="submit" 
                             class="submit"
@@ -61,13 +72,19 @@ export default {
                 seccion: {
                     idSeccion: null,
                     nombreSeccion: ""
+                },
+                marca: {
+                    idMarca: null,
+                    nombreMarca: ""
                 }
             },
-            secciones:[]
+            secciones:[],
+            marcas:[]
         }
     },
     created() {
         this.obtenerSecciones();
+        this.obtenerProveedores();
     },
     methods: {
         confirmarCreacionArticulo() {
@@ -91,6 +108,15 @@ export default {
                 .catch(error => {
                     console.error('Error al recuperar secciones:', error);
                 });
+        },
+        obtenerProveedores() {
+            axios.get('http://localhost:8000/api/v1/tienda/marcas')
+            .then(response => {
+                this.marcas = response.data;
+            })
+            .catch(error => {
+              console.error('Error al recuperar marcas:', error);
+            });
         },
         cancelarCreacionArticulo() {
             this.$router.push({ name: 'articulos' });

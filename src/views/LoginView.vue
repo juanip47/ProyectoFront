@@ -108,8 +108,8 @@ export default {
 
 <style>
 .v-main{
-    background: -webkit-linear-gradient(180deg, #ef2525,#e5f505);
-    background: linear-gradient(180deg, #ef2525,#e5f505);
+    background: -webkit-linear-gradient(360deg, #3d8c93,#5fcdca);
+    background: linear-gradient(360deg, #3d8c93,#5fcdca);
 }
 .encabezadoLogin{
     display: flex;

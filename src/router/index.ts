@@ -12,6 +12,8 @@ import CrearSeccionView from '../views/CrearSeccionView.vue'
 import UsuariosView from '../views/UsuariosView.vue'
 import CrearUsuarioView from '../views/CrearUsuarioView.vue'
 import LoginView from '../views/LoginView.vue'
+import MarcasView from '../views/MarcasView.vue'
+import ArticulosPorMarcaView from '../views/ArticulosPorMarcaView.vue'
 
 Vue.use(VueRouter)
 
@@ -75,7 +77,17 @@ const routes: Array<RouteConfig> = [
     path: '/login',
     name: 'login',
     component: LoginView
-  }
+  },
+  {
+    path: '/marcas',
+    name: 'marcas',
+    component: MarcasView
+  },
+  {
+    path: '/articulosPorMarca',
+    name: 'articulosPorMarca',
+    component: ArticulosPorMarcaView
+  },
 ]
 
 const router = new VueRouter({

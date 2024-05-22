@@ -1,7 +1,6 @@
 <template>
   <v-app-bar
     app
-    color="red"
     dark
   >
     <div class="d-flex align-center" @click="goToHome">

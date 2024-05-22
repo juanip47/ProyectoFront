@@ -29,6 +29,17 @@
                                 dense
                             ></v-select>
                         </div>
+                        <div class="hijos">
+                            <v-select
+                                v-model="articulo.marca.idMarca"
+                                :items="marcas"
+                                label="Selecciona la marca"
+                                item-value="idMarca"
+                                item-text="nombreMarca"
+                                solo
+                                dense
+                            ></v-select>
+                        </div>
                         <v-btn
                             type="submit" 
                             class="submit"
@@ -48,27 +59,22 @@
 <script>
 import axios from 'axios';
 import BackHome from '../components/BackHome.vue';
+import Articulo from '@/models/Articulo';
 export default {
     components: {
         BackHome,
     },
     data() {
         return {
-            articulo: {
-                descripcionArticulo: "",
-                cantidadArticulo: null,
-                precioArticulo: null,
-                seccion: {
-                    idSeccion: null,
-                    nombreSeccion: ""
-                }
-            },
-            secciones:[]
+            articulo: new Articulo(),
+            secciones:[],
+            marcas:[]
         }
     },
     created() {
         this.articulo = this.$route.params.articulo;
         this.obtenerSecciones();
+        this.obtenerProveedores();
     },
     methods: {
         confirmarEdicionArticulo() {
@@ -93,8 +99,17 @@ export default {
                     console.error('Error al recuperar secciones:', error);
                 });
         },
+        obtenerProveedores() {
+            axios.get('http://localhost:8000/api/v1/tienda/marcas')
+            .then(response => {
+                this.marcas = response.data;
+            })
+            .catch(error => {
+              console.error('Error al recuperar marcas:', error);
+            });
+        },
         cancelarEdicionArticulo() {
-            window.history.go(-1)
+            this.$router.push({ name: 'articulos' });
         }
     }
 }

@@ -10,8 +10,8 @@
     >
       <template v-slot:item="{ item }">
         <tr>
+          <td>{{ item.nombreUsuario }}</td>
           <td>{{ item.correoUsuario }}</td>
-          <td>{{ item.contraseniaUsuario }}</td>
           <td class="acciones">
             <v-icon mid color="info" @click.stop="editarUsuarios(item)">mdi-pencil</v-icon>
             <v-icon mid color="error" @click.stop="confirmarEliminarUsuario(item.correoUsuario)">mdi-delete</v-icon>
@@ -50,8 +50,9 @@ export default {
     return {
       usuarios:[],
       headers: [
+        { text: 'Nombre', value: 'nombreUsuario' },
         { text: 'Correo', value: 'correoUsuario' },
-        { text: 'Contraseña', value: 'contraseniaUsuario' },
+        { text: 'Editar' }
       ],
       confirmacionEliminacionUsuario: false,
       usuarioAEliminar: null

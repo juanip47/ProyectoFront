@@ -12,7 +12,7 @@
         <tr>
           <td>{{ item.idSeccion }}</td>
           <td>{{ item.nombreSeccion }}</td>
-          <td><v-btn @click="verArticulosPorSeccion(item)">{{ item.articulos }} Ver</v-btn></td>
+          <td><v-btn @click="verArticulosPorSeccion(item)">Ver</v-btn></td>
           <td class="acciones">
             <v-icon mid color="info" @click.stop="editarSecciones(item)">mdi-pencil</v-icon>
             <v-icon mid color="error" @click.stop="confirmarEliminarSeccion(item.idSeccion)">mdi-delete</v-icon>
@@ -54,6 +54,7 @@ export default {
         { text: 'Id', value: 'idSeccion' },
         { text: 'Sección', value: 'nombreSeccion' },
         { text: 'Artículos' },
+        { text: 'Editar' }
       ],
       confirmacionEliminacionSeccion: false,
       seccionAEliminar: null

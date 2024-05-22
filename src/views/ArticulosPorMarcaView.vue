@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <BackHome/>
-    <h2 class="encabezado">Listado de Artículos de {{ this.seccion.nombreSeccion }}</h2>
+    <h2 class="encabezado">Listado de Artículos de {{ this.marca.nombreMarca }}</h2>
     <v-data-table
       :headers="headers"
       :items="articulos"
@@ -14,7 +14,7 @@
           <td>{{ item.descripcionArticulo }}</td>
           <td>{{ item.cantidadArticulo }}</td>
           <td>{{ item.precioArticulo }}</td>
-          <td>{{ item.marca?.nombreMarca }}</td>
+          <td>{{ item.seccion?.nombreSeccion }}</td>
           <td class="acciones">
             <v-icon mid color="info" @click.stop="editarArticulos(item)">mdi-pencil</v-icon>
             <v-icon mid color="error" @click.stop="confirmarEliminarArticulo(item.idArticulo)">mdi-delete</v-icon>
@@ -45,7 +45,7 @@
 <script>
 import axios from 'axios';
 import BackHome from '../components/BackHome.vue';
-import Seccion from '@/models/Seccion'
+import Marca from '@/models/Marca'
 export default {
     components: {
     BackHome
@@ -63,16 +63,16 @@ export default {
       ],
       confirmacionEliminacionArticulo: false,
       articuloAEliminar: null,
-      seccion: new Seccion()
+      marca: new Marca()
     }
   },
   created() {
-    this.seccion = this.$route.params.seccion;
-    this.obtenerArticulosPorSeccion()
+    this.marca = this.$route.params.marca;
+    this.obtenerArticulosPorMarca()
   },
   methods: {
-    obtenerArticulosPorSeccion() {
-        axios.get(`http://localhost:8000/api/v1/tienda/articulos/seccion?idSeccion=${this.seccion.idSeccion}`)
+    obtenerArticulosPorMarca() {
+        axios.get(`http://localhost:8000/api/v1/tienda/articulos/marca?idMarca=${this.marca.idMarca}`)
             .then(response => {
                 this.articulos = response.data;
             })
@@ -92,7 +92,7 @@ export default {
       axios.delete(`http://localhost:8000/api/v1/tienda/articulo?idArticulo=${idArticulo}`)
         .then(response => {
             console.log(response.data);
-            this.obtenerArticulosPorSeccion();
+            this.obtenerArticulosPorMarca();
         })
         .catch(error => {
           console.log('Error al eliminar el artículo:', error)

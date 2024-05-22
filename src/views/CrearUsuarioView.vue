@@ -7,6 +7,10 @@
                 <v-card-text>
                     <v-form @submit.prevent="confirmarCreacionUsuario">
                         <div class="hijos">
+                            <label for="nombre">Nombre:</label>
+                            <input v-model="usuario.nombreUsuario" type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="hijos">
                             <label for="correo">Correo:</label>
                             <input v-model="usuario.correoUsuario" type="text" class="form-control" id="correo" required>
                         </div>
