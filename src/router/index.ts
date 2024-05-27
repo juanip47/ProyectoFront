@@ -11,10 +11,12 @@ import EditarSeccionView from '../views/EditarSeccionView.vue'
 import CrearSeccionView from '../views/CrearSeccionView.vue'
 import UsuariosView from '../views/UsuariosView.vue'
 import CrearUsuarioView from '../views/CrearUsuarioView.vue'
+import EditarUsuarioView from '../views/EditarUsuarioView.vue'
 import LoginView from '../views/LoginView.vue'
 import MarcasView from '../views/MarcasView.vue'
 import ArticulosPorMarcaView from '../views/ArticulosPorMarcaView.vue'
 import CrearMarcaView from '../views/CrearMarcaView.vue'
+import EditarMarcaView from '../views/EditarMarcaView.vue'
 
 Vue.use(VueRouter)
 
@@ -75,6 +77,11 @@ const routes: Array<RouteConfig> = [
     component: CrearUsuarioView
   },
   {
+    path: '/editarUsuario',
+    name: 'editarUsuario',
+    component: EditarUsuarioView
+  },
+  {
     path: '/login',
     name: 'login',
     component: LoginView
@@ -93,6 +100,11 @@ const routes: Array<RouteConfig> = [
     path: '/crearMarca',
     name: 'crearMarca',
     component: CrearMarcaView
+  },
+  {
+    path: '/editarMarca',
+    name: 'editarMarca',
+    component: EditarMarcaView
   },
 ]
 

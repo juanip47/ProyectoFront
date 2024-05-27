@@ -13,7 +13,7 @@ export default Vue.extend({
   name: 'App',
 
   data: () => ({
-    //
+    
   }),
   methods: {
     goToHome() {

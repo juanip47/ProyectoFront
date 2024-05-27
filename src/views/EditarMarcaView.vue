@@ -3,23 +3,23 @@
     <v-row justify="center">
         <v-col cols="20" sm="10" md="6">
             <v-card>
-                <v-card-title class="headline encabezado">Crear Sección</v-card-title>
+                <v-card-title class="headline encabezado">Editar Marca</v-card-title>
                 <v-card-text>
-                    <v-form @submit.prevent="confirmarCreacionSeccion">
+                    <v-form @submit.prevent="confirmarEdicionMarca">
                         <div class="hijos">
                             <label for="nombre">Nombre:</label>
-                            <input v-model="seccion.nombreSeccion" type="text" class="form-control" id="nombre" required>
+                            <input v-model="marca.nombreMarca" type="text" class="form-control" id="nombre" required>
                         </div>
-                        <v-btn 
+                        <v-btn
                             type="submit" 
                             class="submit"
                             color="success"
-                        >Crear</v-btn>
-                        <v-btn  
+                        >Guardar Cambios</v-btn>
+                        <v-btn 
                             class="cancelar"
                             color="error"
-                            @click="cancelarCreacionSeccion"
-                        >Cancelar</v-btn >
+                            @click="cancelarEdicionMarca"
+                        >Cancelar</v-btn>
                     </v-form>
                 </v-card-text>
             </v-card>
@@ -29,37 +29,37 @@
 </template>
 
 <script>
-import Seccion from '@/models/Seccion';
 import axios from 'axios';
 import BackHome from '../components/BackHome.vue';
+import Marca from '@/models/Marca';
 export default {
     components: {
         BackHome,
     },
     data() {
         return {
-            seccion: new Seccion(),
+            marca: new Marca()
         }
     },
     created() {
+        this.marca = this.$route.params.marca;
     },
     methods: {
-        confirmarCreacionSeccion() {
-            axios.post('http://localhost:8000/api/v1/tienda/nuevaSeccion', this.seccion)
+        confirmarEdicionMarca() {
+            axios.put(`http://localhost:8000/api/v1/tienda/editarMarca`, this.marca)
                 .then(response => {
-                    this.$router.push({ name: 'secciones' });
+                    this.$router.push({ name: 'marcas' });
                     window.alert(response.data)
                 })
                 .catch(error => {
-                    console.error('Error al crear la nueva sección:', error);
-                    
+                    console.error('Error al guardar los cambios:', error);
                     if (error == 'AxiosError: Request failed with status code 500') {
-                        window.alert('La sección ya existe')
+                        window.alert('La marca ya existe')
                     }
                 });
         },
-        cancelarCreacionSeccion() {
-            this.$router.push({ name: 'secciones' });
+        cancelarEdicionMarca() {
+            window.history.go(-1)
         }
     }
 }
@@ -82,7 +82,7 @@ export default {
     font-style: italic;
     padding: 0.1%;
     border-radius: 5%;
-    margin-left: 40%;
+    margin-left: 32%;
 }
 .cancelar{
     font-family: 'Times New Roman', Times, serif;

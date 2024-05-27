@@ -21,9 +21,11 @@
                         <v-btn 
                             type="submit" 
                             class="submit"
+                            color="success"
                         >Crear</v-btn>
                         <v-btn  
                             class="cancelar"
+                            color="error"
                             @click="cancelarCreacionUsuario"
                         >Cancelar</v-btn >
                     </v-form>

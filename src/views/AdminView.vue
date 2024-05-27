@@ -69,7 +69,7 @@ export default {
         BackHome
     },
     data() {
-
+        return{ };
     }, 
     created() {
 

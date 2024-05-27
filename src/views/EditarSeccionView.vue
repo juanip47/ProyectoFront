@@ -13,9 +13,11 @@
                         <v-btn
                             type="submit" 
                             class="submit"
+                            color="success"
                         >Guardar Cambios</v-btn>
                         <v-btn 
-                            class="cancelar" 
+                            class="cancelar"
+                            color="error"
                             @click="cancelarEdicionSeccion"
                         >Cancelar</v-btn>
                     </v-form>
