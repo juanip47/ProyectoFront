@@ -142,8 +142,14 @@ export default {
     width: 20%;
     margin: 5% 6.5% 2% 6.5%;
 }
+.carta:hover{
+    transform: scale(1.1);
+}
 .carta2{
     width: 20%;
     margin: 5% 0 2% 20%;
+}
+.carta2:hover{
+    transform: scale(1.1);
 }
 </style>
