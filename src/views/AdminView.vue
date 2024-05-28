@@ -93,19 +93,23 @@ export default {
     created() {
         this.obtenerUsuarioLogueado(this.correo);
     },
-    mounted() {
-        
-    },
     methods: {
         obtenerUsuarioLogueado(correo) {
             correo = localStorage.correo;
-            axios.get(`http://localhost:8000/api/v1/tienda/usuarioPorCorreo?correoUsuario=${correo}`)
+
+            if (correo == null) {
+                this.$router.push({ name: 'login' })
+            } else {
+                axios.get(`http://localhost:8000/api/v1/tienda/usuarioPorCorreo?correoUsuario=${correo}`)
                 .then(response => {
                     this.usuarioLogueado = response.data
                 })
                 .catch(error => {
                     console.log('Error al obtener el usuario:', error)
                 })
+            }
+            
+            
         },
         cerrarSesion() {
             localStorage.removeItem('correo')

@@ -12,7 +12,8 @@
         <tr>
           <td>{{ item.idArticulo }}</td>
           <td>{{ item.descripcionArticulo }}</td>
-          <td>{{ item.cantidadArticulo }}</td>
+          <td v-if="item.cantidadArticulo > 20">{{ item.cantidadArticulo }}</td>
+          <td v-else class="reponer">{{ item.cantidadArticulo }}</td>
           <td>{{ item.precioArticulo }}</td>
           <td>{{ item.seccion?.nombreSeccion }}</td>
           <td>{{ item.marca?.nombreMarca }}</td>
@@ -115,5 +116,8 @@ export default {
   }
   .crearArticulo{
     padding: 0 49% 0 49%;
+  }
+  .reponer{
+    color: red;
   }
 </style>
