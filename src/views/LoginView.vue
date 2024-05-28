@@ -40,6 +40,12 @@
                             @click="crearUsuario"
                         >¿No tienes cuenta? Crea una aquí</button>
                     </v-form>
+                    
+                    <div class="btn-cont">
+                        <div id="google-login-btn" v-google-identity-login-btn="{ clientId }">
+                            Continuar con google
+                        </div>
+                    </div>
                 </v-card-text>
             </v-card>
         </v-col>
@@ -51,16 +57,22 @@
 import axios from 'axios';
 import BackHome from '../components/BackHome.vue';
 import Usuario from '../models/Usuario';
+import GoogleSignInButton from 'vue-google-identity-login-btn';
+
 export default {
     components: {
         BackHome,
+    },
+    directives: {
+        GoogleSignInButton
     },
     data() {
         return {
             correo: "",
             contrasenia: "",
             usuarioComprobar: new Usuario(),
-            errores: []
+            errores: [],
+            clientId: '970960317167-7sert4gccigpvc9bnj76gafns1jdvrjv.apps.googleusercontent.com'
         }
     },
     created() {
@@ -101,6 +113,12 @@ export default {
         },
         crearUsuario() {
             this.$router.push({ name: 'crearUsuario' });
+        },
+        onGoogleAuthSuccess (jwtCredentials) {
+            console.log(jwtCredentials);
+            const profileData = JSON.parse( atob(jwtCredentials.split('.')[1]) );
+            const { name, picture, email } = profileData;
+            console.table({ name, picture, email });
         }
     }
 }
@@ -145,5 +163,15 @@ label{
 }
 ul{
     list-style: none;
+}
+
+.btn-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5%;
+}
+.btn-cont > div {
+  text-align: center;
 }
 </style>
