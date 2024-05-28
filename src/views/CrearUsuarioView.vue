@@ -55,7 +55,7 @@ export default {
         confirmarCreacionUsuario() {
             axios.post('http://localhost:8000/api/v1/tienda/nuevoUsuario', this.usuario)
                 .then(response => {
-                    this.$router.push({ name: 'usuarios' });
+                    this.$router.push({ name: 'admin' });
                     window.alert(response.data)
                 })
                 .catch(error => {

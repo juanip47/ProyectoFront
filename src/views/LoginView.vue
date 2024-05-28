@@ -75,9 +75,6 @@ export default {
             clientId: '970960317167-7sert4gccigpvc9bnj76gafns1jdvrjv.apps.googleusercontent.com'
         }
     },
-    created() {
-        
-    },
     methods: {
         validarLoginUsuario() {
             axios.get(`http://localhost:8000/api/v1/tienda/usuarioPorCorreo?correoUsuario=${this.correo}`)
@@ -85,6 +82,7 @@ export default {
                     this.usuarioComprobar = response.data
                     if (this.usuarioComprobar.contraseniaUsuario == this.contrasenia) {
                         this.errorValidacion = false
+                        localStorage.correo = this.correo
                         this.$router.push({ name: 'admin' });
                     } else {
                         this.errores = []
