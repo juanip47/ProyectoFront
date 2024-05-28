@@ -109,7 +109,7 @@ export default {
 
 <style scoped>
   .encabezado{
-    color: greenyellow;
+    color: white;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
   }

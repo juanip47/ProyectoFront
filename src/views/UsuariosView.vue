@@ -100,7 +100,7 @@ export default {
 
 <style>
   .encabezadoUsuario{
-    color: greenyellow;
+    color: white;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     text-align: center;

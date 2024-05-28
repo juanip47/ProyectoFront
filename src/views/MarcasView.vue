@@ -105,7 +105,7 @@ export default {
 
 <style scoped>
   .encabezadoMarca{
-    color: greenyellow;
+    color: white;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     text-align: center;
