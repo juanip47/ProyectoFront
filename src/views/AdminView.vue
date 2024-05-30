@@ -12,7 +12,7 @@
                         contain
                         src="../assets/Almacen.jpg"
                         transition="scale-transition"
-                        width="200"
+                        width="100vh"
                     />
                 </v-card-text>
                 <v-card-actions>Gestionar Inventario</v-card-actions>
@@ -26,7 +26,7 @@
                         contain
                         src="../assets/Secciones.jpg"
                         transition="scale-transition"
-                        width="200"
+                        width="100vh"
                     />
                 </v-card-text>
                 <v-card-actions>Gestionar Secciones</v-card-actions>
@@ -40,7 +40,7 @@
                         contain
                         src="../assets/UsuarioDefault.jpg"
                         transition="scale-transition"
-                        width="200"
+                        width="100vh"
                     />
                 </v-card-text>
                 <v-card-actions>Gestionar Usuarios</v-card-actions>
@@ -54,7 +54,7 @@
                         contain
                         src="../assets/Proveedores.jpg"
                         transition="scale-transition"
-                        width="200"
+                        width="100vh"
                     />
                 </v-card-text>
                 <v-card-actions>Gestionar Proveedores</v-card-actions>
@@ -68,7 +68,7 @@
                         contain
                         src="../assets/LogOut.jpg"
                         transition="scale-transition"
-                        width="200"
+                        width="100vh"
                     />
                 </v-card-text>
                 <v-card-actions>Cerrar Sesión</v-card-actions>
