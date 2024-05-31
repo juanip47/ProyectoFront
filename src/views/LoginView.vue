@@ -81,10 +81,14 @@ export default {
     },
     methods: {
         validarLoginUsuario() {
+            const CryptoJS = require("crypto-js");
             axios.get(`http://localhost:8000/api/v1/tienda/usuarioPorCorreo?correoUsuario=${this.correo}`)
                 .then(response => {
                     this.usuarioComprobar = response.data
-                    if (this.usuarioComprobar.contraseniaUsuario == this.contrasenia) {
+                    const contraseniaEncriptada = CryptoJS.SHA256(this.contrasenia)
+                    const contraseniaEncriptada2 = contraseniaEncriptada.toString(CryptoJS.enc.Hex)
+                    console.log(this.usuarioComprobar.contraseniaUsuario)
+                    if (this.usuarioComprobar.contraseniaUsuario == contraseniaEncriptada2) {
                         this.errorValidacion = false
                         localStorage.correo = this.correo
                         this.$router.push({ name: 'admin' });
