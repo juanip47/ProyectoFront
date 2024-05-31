@@ -30,15 +30,19 @@
                             <label for="contrasenia">Contraseña:</label>
                             <input v-model="contrasenia" type="password" class="form-control" id="contrasenia" required>
                         </div>
-                        <v-btn 
-                            class="submitLogin"
-                            @click="validarLoginUsuario"
-                        >Continuar</v-btn>
-                        <br/>
-                        <button 
-                            class="crearUsuarioLogin"
-                            @click="crearUsuario"
-                        >¿No tienes cuenta? Crea una aquí</button>
+                        <div class="btn-cont">
+                                <v-btn 
+                                    @click="validarLoginUsuario"
+                                >Continuar</v-btn>
+                        </div>
+                        
+                        
+                        <div class="btn-cont">
+                            <button 
+                                class="crearUsuarioLogin"
+                                @click="crearUsuario"
+                            >¿No tienes cuenta? Crea una aquí</button>
+                        </div>
                     </v-form>
                     
                     <div class="btn-cont">
@@ -138,19 +142,12 @@ export default {
     margin-top: 2%;
     text-align: center;
 }
-.submitLogin{
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    border-radius: 5%;
-    margin: 5% 0 0 38.5%; 
-}
 .crearUsuarioLogin{
     font-family: 'Times New Roman', Times, serif;
     color: blue;
     font-style: italic;
     font-weight: bold;
-    font-style: italic;
-    margin: 3% 0 0 33%;    
+    font-style: italic;  
 }
 .erroresLogin{
     text-align: center;
@@ -168,6 +165,7 @@ ul{
   flex-direction: column;
   align-items: center;
   margin-top: 5%;
+  font-family: 'Times New Roman', Times, serif;
 }
 .btn-cont > div {
   text-align: center;
