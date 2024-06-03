@@ -10,7 +10,7 @@
         contain
         src="../assets/Logo H&S Super.png"
         transition="scale-transition"
-        width="55"
+        width="7.5vh"
       />
        <v-app-bar-title @click="goToHome">H&S Super</v-app-bar-title>
     </div>
@@ -21,7 +21,7 @@
         contain
         src="../assets/Flecha Atras.png"
         transition="scale-transition"
-        width="55"
+        width="7.5vh"
       />
     </div>
   </v-app-bar>
@@ -42,6 +42,6 @@ export default {
 
 <style>
 .atras{
-  margin-left: 82.5%
+  margin-left: 80vw
 }
 </style>
