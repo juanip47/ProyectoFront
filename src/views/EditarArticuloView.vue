@@ -143,7 +143,4 @@ export default {
     border-radius: 5%;
     margin-left: 2%;
 }
-label{
-    margin-right: 2.5%;
-}
 </style>

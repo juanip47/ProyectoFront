@@ -10,16 +10,19 @@
                             <label for="nombre">Nombre:</label>
                             <input v-model="usuario.nombreUsuario" type="text" class="form-control" id="nombre" required>
                         </div>
-                        <v-btn
-                            type="submit" 
-                            class="submit"
-                            color="success"
-                        >Guardar Cambios</v-btn>
-                        <v-btn 
-                            class="cancelar"
-                            color="error"
-                            @click="cancelarEdicionUsuario"
-                        >Cancelar</v-btn>
+                        <div class="botones">
+                            <v-btn
+                                type="submit" 
+                                class="submit"
+                                color="success"
+                            >Guardar Cambios</v-btn>
+                            <v-btn 
+                                class="cancelar"
+                                color="error"
+                                @click="cancelarEdicionUsuario"
+                            >Cancelar</v-btn>
+                        </div>
+                        
                     </v-form>
                 </v-card-text>
             </v-card>
@@ -77,21 +80,9 @@ export default {
     margin-top: 2%;
     text-align: center;
 }
-.submit{
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    padding: 0.1%;
-    border-radius: 5%;
-    margin-left: 32%;
-}
-.cancelar{
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    padding: 0.1%;
-    border-radius: 5%;
-    margin-left: 2%;
-}
-label{
-    margin-right: 2.5%;
+.botones{
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5%;
 }
 </style>

@@ -12,7 +12,16 @@
         <tr>
           <td>{{ item.idMarca }}</td>
           <td>{{ item.nombreMarca }}</td>
-          <td><v-btn color="primary" @click="verArticulosPorMarca(item)">Ver</v-btn></td>
+          <td><v-img
+                        alt="Imagen de Ver"
+                        class="shrink mr-2"
+                        contain
+                        src="../assets/Ojo.png"
+                        transition="scale-transition"
+                        width="5vh"
+                        @click="verArticulosPorMarca(item)"
+                />
+          </td>
           <td class="acciones">
             <v-icon mid color="info" @click.stop="editarMarcas(item)">mdi-pencil</v-icon>
             <v-icon mid color="error" @click.stop="confirmarEliminarMarca(item.idMarca)">mdi-delete</v-icon>

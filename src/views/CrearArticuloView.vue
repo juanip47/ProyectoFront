@@ -90,6 +90,7 @@ export default {
     },
     methods: {
         confirmarCreacionArticulo() {
+            
             axios.post('http://localhost:8000/api/v1/tienda/nuevoArticulo', this.articulo)
                 .then(response => {
                     this.$router.push({ name: 'articulos' });
@@ -139,21 +140,5 @@ export default {
     margin-top: 2%;
     text-align: center;
 }
-.submit{
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    padding: 0.1%;
-    border-radius: 5%;
-    margin-left: 40%;
-}
-.cancelar{
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    padding: 0.1%;
-    border-radius: 5%;
-    margin-left: 2%;
-}
-label{
-    margin-right: 2.5%;
-}
+
 </style>

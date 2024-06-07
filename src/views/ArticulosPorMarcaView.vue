@@ -58,7 +58,7 @@ export default {
         { text: 'Descripcion', value: 'descripcionArticulo' },
         { text: 'Cantidad', value: 'cantidadArticulo' },
         { text: 'Precio', value: 'precioArticulo' },
-        { text: 'Marca', value: 'nombreMarca' },
+        { text: 'Seccion', value: 'nombreSeccion' },
         { text: 'Editar' }
       ],
       confirmacionEliminacionArticulo: false,

@@ -98,7 +98,7 @@ export default {
                         if (!this.contrasenia) {
                             this.errores.push('Contraseña requerido')
                         } else {
-                            this.errores.push('Contraseña incorrecta')
+                            this.errores.push('Usuario y/o Contraseña incorrectos')
                         }
                     }
                 })

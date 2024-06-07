@@ -18,16 +18,19 @@
                             <label for="contrasenia">Contraseña:</label>
                             <input v-model="usuario.contraseniaUsuario" type="text" class="form-control" id="contrasenia" required>
                         </div>
-                        <v-btn 
-                            type="submit" 
-                            class="submit"
-                            color="success"
-                        >Crear</v-btn>
-                        <v-btn  
-                            class="cancelar"
-                            color="error"
-                            @click="cancelarCreacionUsuario"
-                        >Cancelar</v-btn >
+                        <div class="botones">
+                            <v-btn 
+                                type="submit" 
+                                class="submit"
+                                color="success"
+                            >Crear</v-btn>
+                            <v-btn  
+                                class="cancelar"
+                                color="error"
+                                @click="cancelarCreacionUsuario"
+                            >Cancelar</v-btn >
+                        </div>
+                        
                     </v-form>
                 </v-card-text>
             </v-card>
@@ -85,21 +88,9 @@ export default {
     margin-top: 2%;
     text-align: center;
 }
-.submit{
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    padding: 0.1%;
-    border-radius: 5%;
-    margin-left: 40%;
-}
-.cancelar{
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    padding: 0.1%;
-    border-radius: 5%;
-    margin-left: 2%;
-}
-label{
-    margin-right: 2.5%;
+.botones{
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5%;
 }
 </style>
