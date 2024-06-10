@@ -96,7 +96,7 @@ export default {
                         this.errores = []
 
                         if (!this.contrasenia) {
-                            this.errores.push('Contraseña requerido')
+                            this.errores.push('Contraseña requerida')
                         } else {
                             this.errores.push('Usuario y/o Contraseña incorrectos')
                         }

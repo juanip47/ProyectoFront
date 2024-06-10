@@ -4,6 +4,13 @@
         <v-col cols="20" sm="10" md="6">
             <v-card>
                 <v-card-title class="headline encabezado">Crear Artículo</v-card-title>
+                <div class="erroresArticulos">
+                    <p v-if="errores.length">
+                        <ul>
+                            <li v-for="error in errores" :key="error">{{ error }}</li>
+                        </ul>
+                    </p>
+                </div>
                 <v-card-text>
                     <v-form @submit.prevent="confirmarCreacionArticulo">
                         <div class="hijos">
@@ -81,7 +88,8 @@ export default {
                 }
             },
             secciones:[],
-            marcas:[]
+            marcas:[],
+            errores:[]
         }
     },
     created() {
@@ -90,8 +98,18 @@ export default {
     },
     methods: {
         confirmarCreacionArticulo() {
-            
-            axios.post('http://localhost:8000/api/v1/tienda/nuevoArticulo', this.articulo)
+            if (this.articulo.cantidadArticulo < 0 || this.articulo.precioArticulo < 0) {
+                this.errorres = []
+                
+                if (this.articulo.cantidadArticulo < 0) {
+                    this.errores.push('La cantidad tiene que ser mayor de 0')
+                }
+                
+                if (this.articulo.precioArticulo < 0) {
+                    this.errores.push('El precio tiene que ser mayor de 0')
+                }
+            } else {
+                axios.post('http://localhost:8000/api/v1/tienda/nuevoArticulo', this.articulo)
                 .then(response => {
                     this.$router.push({ name: 'articulos' });
                     window.alert(response.data)
@@ -102,6 +120,7 @@ export default {
                         window.alert('El artículo ya existe')
                     }
                 });
+            }      
         },
         obtenerSecciones() {
             axios.get('http://localhost:8000/api/v1/tienda/secciones')
@@ -135,6 +154,10 @@ export default {
     color: red;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
+}
+.erroresArticulos{
+    text-align: center;
+    color: red;
 }
 .hijos{
     margin-top: 2%;
