@@ -11,7 +11,7 @@
       <template v-slot:item="{ item }">
         <tr>
           <td>{{ item.nombreUsuario }}</td>
-          <td>{{ item.correoUsuario }}</td>
+          <td>{{ item.correoUsuarioOfuscado }}</td>
           <td class="acciones">
             <v-icon mid color="info" @click.stop="editarUsuarios(item)">mdi-pencil</v-icon>
             <v-icon mid color="error" @click.stop="confirmarEliminarUsuario(item.correoUsuario)">mdi-delete</v-icon>
