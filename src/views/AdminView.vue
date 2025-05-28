@@ -108,8 +108,6 @@ export default {
                     console.log('Error al obtener el usuario:', error)
                 })
             }
-            
-            
         },
         cerrarSesion() {
             localStorage.removeItem('correo')

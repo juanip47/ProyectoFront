@@ -16,7 +16,14 @@
                         </div>
                         <div class="hijos">
                             <label for="contrasenia">Contraseña:</label>
-                            <input v-model="usuario.contraseniaUsuario" type="text" class="form-control" id="contrasenia" required>
+                            <input v-model="usuario.contraseniaUsuario" type="password" class="form-control" id="contrasenia" required>
+                        </div>
+                        <div class="hijos">
+                            <label for="tipo">Tipo:</label>
+                            <select v-model="rol" id="rol">
+                                <option value="usuario">Usuario</option>
+                                <option value="admin">Admin</option>
+                            </select>
                         </div>
                         <div class="botones">
                             <v-btn 
@@ -92,5 +99,8 @@ export default {
     display: flex;
     justify-content: center;
     margin-top: 3.5%;
+}
+select{
+    border: solid 1px black !important;
 }
 </style>

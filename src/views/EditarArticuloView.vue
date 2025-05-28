@@ -70,7 +70,8 @@ export default {
         return {
             articulo: new Articulo(),
             secciones:[],
-            marcas:[]
+            marcas:[],
+            errores:[]
         }
     },
     created() {
@@ -80,7 +81,18 @@ export default {
     },
     methods: {
         confirmarEdicionArticulo() {
-            axios.put(`http://localhost:8000/api/v1/tienda/editarArticulo`, this.articulo)
+            if (this.articulo.cantidadArticulo < 0 || this.articulo.precioArticulo < 0) {
+                this.errorres = []
+                
+                if (this.articulo.cantidadArticulo < 0) {
+                    this.errores.push('La cantidad tiene que ser mayor de 0')
+                }
+                
+                if (this.articulo.precioArticulo < 0) {
+                    this.errores.push('El precio tiene que ser mayor de 0')
+                }
+            } else {
+                axios.put(`http://localhost:8000/api/v1/tienda/editarArticulo`, this.articulo)
                 .then(response => {
                     this.$router.push({ name: 'articulos' });
                     window.alert(response.data)
@@ -91,6 +103,8 @@ export default {
                         window.alert('El artículo ya existe')
                     }
                 });
+            }
+            
         },
         obtenerSecciones() {
             axios.get('http://localhost:8000/api/v1/tienda/secciones')

@@ -14,6 +14,9 @@
           <td>{{ item.descripcionArticulo }}</td>
           <td>{{ item.cantidadArticulo }}</td>
           <td>{{ item.precioArticulo }}</td>
+          <td>
+           <img :src="`/img/${item.imagenArticulo}`" alt="Imagen Artículo" width="100"/>
+          </td>
           <td>{{ item.marca?.nombreMarca }}</td>
           <td class="acciones">
             <v-icon mid color="info" @click.stop="editarArticulos(item)">mdi-pencil</v-icon>
@@ -58,6 +61,7 @@ export default {
         { text: 'Descripcion', value: 'descripcionArticulo' },
         { text: 'Cantidad', value: 'cantidadArticulo' },
         { text: 'Precio', value: 'precioArticulo' },
+        { text: 'Imagen', value: 'imagenArticulo' },
         { text: 'Marca', value: 'nombreMarca' },
         { text: 'Editar' }
       ],

@@ -44,12 +44,6 @@
                             >¿No tienes cuenta? Crea una aquí</button>
                         </div>
                     </v-form>
-                    
-                    <div class="btn-cont">
-                        <div id="google-login-btn" v-google-identity-login-btn="{ clientId }">
-                            Continuar con google
-                        </div>
-                    </div>
                 </v-card-text>
             </v-card>
         </v-col>
@@ -61,22 +55,17 @@
 import axios from 'axios';
 import BackHome from '../components/BackHome.vue';
 import Usuario from '../models/Usuario';
-import GoogleSignInButton from 'vue-google-identity-login-btn';
 
 export default {
     components: {
         BackHome,
-    },
-    directives: {
-        GoogleSignInButton
     },
     data() {
         return {
             correo: "",
             contrasenia: "",
             usuarioComprobar: new Usuario(),
-            errores: [],
-            clientId: '970960317167-7sert4gccigpvc9bnj76gafns1jdvrjv.apps.googleusercontent.com'
+            errores: []
         }
     },
     methods: {
@@ -85,13 +74,19 @@ export default {
             axios.get(`http://localhost:8000/api/v1/tienda/usuarioPorCorreo?correoUsuario=${this.correo}`)
                 .then(response => {
                     this.usuarioComprobar = response.data
+                    console.log(this.usuarioComprobar)
                     const contraseniaEncriptada = CryptoJS.SHA256(this.contrasenia)
                     const contraseniaEncriptada2 = contraseniaEncriptada.toString(CryptoJS.enc.Hex)
                     console.log(this.usuarioComprobar.contraseniaUsuario)
                     if (this.usuarioComprobar.contraseniaUsuario == contraseniaEncriptada2) {
                         this.errorValidacion = false
                         localStorage.correo = this.correo
-                        this.$router.push({ name: 'admin' });
+                        if (this.usuarioComprobar.tipoUsuario == 'admin') {
+                            this.$router.push({ name: 'admin' });
+                        } else {
+                            this.$router.push({ name: 'usuario' });
+                        }
+                        
                     } else {
                         this.errores = []
 
@@ -119,12 +114,6 @@ export default {
         },
         crearUsuario() {
             this.$router.push({ name: 'crearUsuario' });
-        },
-        onGoogleAuthSuccess (jwtCredentials) {
-            console.log(jwtCredentials);
-            const profileData = JSON.parse( atob(jwtCredentials.split('.')[1]) );
-            const { name, picture, email } = profileData;
-            console.table({ name, picture, email });
         }
     }
 }
@@ -173,5 +162,8 @@ ul{
 }
 .btn-cont > div {
   text-align: center;
+}
+input {
+    border: solid 1px black !important;
 }
 </style>

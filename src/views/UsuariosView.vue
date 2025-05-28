@@ -12,6 +12,7 @@
         <tr>
           <td>{{ item.nombreUsuario }}</td>
           <td>{{ item.correoUsuarioOfuscado }}</td>
+          <td>{{ item.tipoUsuario }}</td>
           <td class="acciones">
             <v-icon mid color="info" @click.stop="editarUsuarios(item)">mdi-pencil</v-icon>
             <v-icon mid color="error" @click.stop="confirmarEliminarUsuario(item.correoUsuario)">mdi-delete</v-icon>
@@ -52,6 +53,7 @@ export default {
       headers: [
         { text: 'Nombre', value: 'nombreUsuario' },
         { text: 'Correo', value: 'correoUsuario' },
+        { text: 'Tipo', value: 'tipoUsuario'},
         { text: 'Editar' }
       ],
       confirmacionEliminacionUsuario: false,

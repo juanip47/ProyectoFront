@@ -17,6 +17,9 @@ import MarcasView from '../views/MarcasView.vue'
 import ArticulosPorMarcaView from '../views/ArticulosPorMarcaView.vue'
 import CrearMarcaView from '../views/CrearMarcaView.vue'
 import EditarMarcaView from '../views/EditarMarcaView.vue'
+import UsuarioView from '../views/UsuarioView.vue'
+import CarritoView from '../views/CarritoView.vue'
+import PagoView from '../views/PagoView.vue'
 
 Vue.use(VueRouter)
 
@@ -105,6 +108,21 @@ const routes: Array<RouteConfig> = [
     path: '/editarMarca',
     name: 'editarMarca',
     component: EditarMarcaView
+  },
+  {
+    path: '/usuarioView',
+    name: 'usuario',
+    component: UsuarioView
+  },
+  {
+    path: '/carrito',
+    name: 'carrito',
+    component: CarritoView
+  },
+  {
+    path: '/pago',
+    name: 'pago',
+    component: PagoView
   },
 ]
 

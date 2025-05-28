@@ -15,6 +15,9 @@
           <td v-if="item.cantidadArticulo > 20">{{ item.cantidadArticulo }}</td>
           <td v-else class="reponer">{{ item.cantidadArticulo }}</td>
           <td>{{ item.precioArticulo }}</td>
+          <td>
+           <img :src="`/img/${item.imagenArticulo}`" alt="Imagen Artículo" width="100"/>
+          </td>
           <td>{{ item.seccion?.nombreSeccion }}</td>
           <td>{{ item.marca?.nombreMarca }}</td>
           <td class="acciones">
@@ -59,12 +62,13 @@ export default {
         { text: 'Descripcion', value: 'descripcionArticulo' },
         { text: 'Cantidad', value: 'cantidadArticulo' },
         { text: 'Precio', value: 'precioArticulo' },
+        { text: 'Imagen', value: 'imagenArticulo' },
         { text: 'Seccion', value: 'nombreSeccion' },
         { text: 'Marca', value: 'nombreMarca' },
         { text: 'Editar' }
       ],
       confirmacionEliminacionArticulo: false,
-      articuloAEliminar: null
+      articuloAEliminar: null,
     };
   },
   created() {
@@ -85,7 +89,7 @@ export default {
     },
     confirmarEliminarArticulo(idArticulo) {
        this.articuloAEliminar = idArticulo;
-       this.confirmacionEliminacionArticulo = true; 
+       this.confirmacionEliminacionArticulo = true;
     },
     eliminarArticulo(idArticulo) {
       console.log("Elimando articulo con Id:", idArticulo);

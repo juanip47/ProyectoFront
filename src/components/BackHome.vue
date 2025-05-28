@@ -12,9 +12,9 @@
         transition="scale-transition"
         width="7.5vh"
       />
-       <v-app-bar-title @click="goToHome">H&S Super</v-app-bar-title>
+       <v-app-bar-title @click="goToHome">H&S</v-app-bar-title>
     </div>
-    <div class="atras" @click="goBack">
+    <div class="atrasAdmin" @click="goBack">
       <v-img
         alt="Atrás"
         class="shrink mr-2"
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style>
-.atras{
-  margin-left: 80vw
+.atrasAdmin{
+  margin-left: 85vw;
 }
 </style>
